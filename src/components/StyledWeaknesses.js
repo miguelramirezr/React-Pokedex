@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import weaknessesList from "../utils/PokemonWeaknesses";
+import React, { useEffect, useState } from "react";
+import usePokemonDamage from "../hooks/usePokemonDamage";
 const StyledWeaknesses = styled.div`
   display: flex;
   flex-direction: row;
@@ -13,48 +14,22 @@ const StyledLabel = styled.label`
   padding-left: 5px;
 `;
 
-const Weaknesses = ({ types }) => {
-  if (!types) {
-    return <div>Loading ... </div>;
-  } else {
-    // console.log(types);
-    let pokemonType = [];
-    types.forEach((element) => {
-      pokemonType.push(element.type.name);
-    });
-    // console.log(pokemonType);
-    // console.log(weaknessesList);
+const Weaknesses = ({ types2 }) => {
+  const weaknesses = usePokemonDamage(types2);
 
-    function getWeaknesses(params) {
-      const weaknesses = [];
-      for (let i = 0; i < params.length; i++) {
-        const type = params[i];
-        let typeWeaknesses;
-        if (weaknessesList[type] !== undefined) {
-          typeWeaknesses = weaknessesList[type];
-          // console.log(typeWeaknesses);
-        } else {
-          typeWeaknesses = [];
-        }
-        for (let j = 0; j < typeWeaknesses.length; j++) {
-          const weakness = typeWeaknesses[j];
-          if (!weaknesses.includes(weakness)) {
-            weaknesses.push(weakness);
-          }
-        }
-      }
-      // console.log(weaknesses)
-      return weaknesses;
-    }
-    let weaknesses = getWeaknesses(pokemonType);
+  if (!types2) {
+    return <div>loading ...</div>;
+  } else {
+    // console.log(weaknesses);
     return (
       <StyledWeaknesses>
         <h3>Weaknesses</h3>
         {weaknesses.map((weakness, index) => (
-          <StyledLabel key={index}>{weakness}</StyledLabel>
+          <StyledLabel key={index}>{weakness.name}</StyledLabel>
         ))}
       </StyledWeaknesses>
     );
   }
 };
+
 export default Weaknesses;

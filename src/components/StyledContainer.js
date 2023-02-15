@@ -29,12 +29,12 @@ const Container = () => {
   const API_URL = `https://pokeapi.co/api/v2/pokemon/`;
   const [currentId, setCurrentId] = useState(1);
   const [pokemon, setPokemon] = useState({ sprites: {} });
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     fetch(`${API_URL}${currentId}`)
       .then((response) => response.json())
       .then((pokemonData) => {
-        console.log(pokemonData);
+        // console.log(pokemonData);
         setCurrentId(pokemonData.id);
         setPokemon(pokemonData);
         setIsLoading(false);
@@ -42,7 +42,11 @@ const Container = () => {
   }, [currentId]);
 
   const getPokemon = (id) => {
-    setCurrentId(id);
+    if (id < 0) {
+      setCurrentId(1);
+    } else {
+      setCurrentId(id);
+    }
   };
   return (
     <StyledContainer>
@@ -60,7 +64,7 @@ const Container = () => {
             <Stats></Stats>
             <Details></Details>
             <Type types={pokemon.types}></Type>
-            <Weaknesses types={pokemon.types}></Weaknesses>
+            <Weaknesses types2={pokemon.types}></Weaknesses>
           </StyledDetailsContainer>
         </StyledBody>
       )}
