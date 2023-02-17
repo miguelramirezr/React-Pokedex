@@ -1,10 +1,9 @@
 import styled from "styled-components";
-// import image1 from "../assets/image1.png";
-import pokemonbackground from "../assets/pokemonbackground.png";
+import pokemonbackground from "../../assets/pokemonbackground.png";
+
 const StyledImage = styled.div`
   width: 100%;
   height: 200px;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,7 +22,6 @@ const Image = ({ route }) => {
           height: "200%",
           transform: "scale(0.5, 0.5)",
         }}
-        // src={image1}
         alt=""
       />
     </StyledImage>

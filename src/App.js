@@ -1,7 +1,8 @@
-import Container from "./components/StyledContainer";
+import CustomContainer from "./components/materialuicomponents/CustomContainer";
+import StyledContainer from "./components/styledcomponents/StyledContainer"
 function App() {
   return (
-    <Container/>
+    <CustomContainer/>
   );
 }
 
