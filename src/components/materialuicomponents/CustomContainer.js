@@ -14,7 +14,7 @@ export default function CustomContainer() {
             justifyContent: "center",
             bgcolor: "#ffff00",
             height: 685,
-            width: 440,
+            width: 360,
             margin: "auto",
             borderRadius: 5,
             position: "absolute",

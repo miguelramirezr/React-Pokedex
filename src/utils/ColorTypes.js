@@ -1,0 +1,21 @@
+const colortypes ={
+    normal: "#808080",
+    fighting: "#399D3E",
+    flying: "#60BEEB",
+    poison: "#A668A6",
+    ground: "#A95700",
+    rock: "#635345",
+    bug: "#2BB02B",
+    ghost: "#6D2F3F",
+    steel: "#FF5D22",
+    fire: "#FFB52E",
+    water: "#167CAC",
+    grass: "#8AFF8A",
+    electric:"#B39F61",
+    psychic: "#8CA2B0",
+    ice: "#00D1D1",
+    dragon: "#DC143C",
+    dark: "#171717",
+    fairy: "#212196",
+}
+export default colortypes;

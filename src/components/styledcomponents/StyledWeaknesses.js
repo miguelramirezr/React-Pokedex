@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React, { useEffect, useState } from "react";
-import usePokemonDamage from "../../hooks/usePokemonDamage";
+// import usePokemonDamage from "../../hooks/usePokemonDamage";
 const StyledWeaknesses = styled.div`
   display: flex;
   flex-direction: row;
@@ -15,7 +15,7 @@ const StyledLabel = styled.label`
 `;
 
 const Weaknesses = ({ types2 }) => {
-  const weaknesses = usePokemonDamage(types2);
+  const weaknesses =[];
 
   if (!types2) {
     return <div>loading ...</div>;

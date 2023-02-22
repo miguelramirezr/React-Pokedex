@@ -1,12 +1,12 @@
 import * as React from "react";
 import CardContent from "@mui/material/CardContent";
 import { useState, useEffect } from "react";
-import Typography from "@mui/material/Typography";
 import CustomCardMedia from "./CustomCardMedia";
 import CustomCardHeader from "./CustomCardHeader";
-import StyledCard from "./StyledCard";
-
-
+import CustomMeasurement from "./CustomMeasurement ";
+import StyledGreenbackgroundCard from "./StyledGreenbackgroundCard";
+import CustomStates from "./CustomStates";
+import CustomInformationCard from "./CustomInformationCard";
 export default function CustomCard() {
   const API_URL = `https://pokeapi.co/api/v2/pokemon/`;
   const [currentId, setCurrentId] = useState(1);
@@ -16,28 +16,39 @@ export default function CustomCard() {
     fetch(`${API_URL}${currentId}`)
       .then((response) => response.json())
       .then((pokemonData) => {
-        // console.log(pokemonData);
+        console.log(pokemonData);
         setCurrentId(pokemonData.id);
         setPokemon(pokemonData);
         setIsLoading(false);
       });
   }, [currentId]);
+  
   if (isLoading) {
-    return <div>loaging ...</div>;
+    return <div>loading ...</div>;
   } else {
     return (
-      <StyledCard
+      <StyledGreenbackgroundCard
         sx={{
-          width: 400,
+          width: 320,
           height: 650,
-          marginTop : 2
+          marginTop: 2,
         }}
       >
         <CustomCardHeader props={pokemon} />
-        <CustomCardMedia props={pokemon} />
-        <CardContent>
+        <CustomCardMedia
+          props={pokemon}
+          setCurrentId={setCurrentId}
+          currentId={currentId}
+        />
+        <CardContent sx={{ width: "100%", padding: 0, margin: 0 }}>
+          <CustomMeasurement
+            pokeweight={pokemon.weight}
+            pokeheight={pokemon.height}
+          />
+          <CustomInformationCard abilities = {pokemon.abilities} name ={pokemon.name}/>
+          <CustomStates dataStats={pokemon.stats} />
         </CardContent>
-      </StyledCard>
+      </StyledGreenbackgroundCard>
     );
   }
 }
